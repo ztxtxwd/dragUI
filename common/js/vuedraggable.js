@@ -412,6 +412,17 @@ const draggableComponent = {
     },
 
     onDragRemove(evt) {
+      // this.$prompt('请输入注释', '提示', {
+      //   confirmButtonText: '确定',
+      //   cancelButtonText: '取消'
+      // }).then(({ value }) => {
+      //   uni.setStorageSync('comment',value)
+      // }).catch(() => {
+      //   this.$message({
+      //     type: 'info',
+      //     message: '取消输入'
+      //   });
+      // });
       insertNodeAt(this.rootContainer, evt.item, evt.oldIndex);
       if (evt.pullMode === "clone") {
         removeNode(evt.clone);

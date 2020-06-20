@@ -6,7 +6,7 @@
 let itemTemplates = `
 <% if(list.num.length === 1){ -%>
                 <% list.num.forEach(num => { -%>
-                     <view<%- iClassToString(num.iClass,'margin-0') -%><%- iStyleToString(num.iStyle) %>>
+                     <view v-if="true" <%- iClassToString(num.iClass) -%><%- iStyleToString(num.iStyle) %>>
                          <% num.itemList.forEach(itemListItem => { -%>
                              <% if(itemListItem.componentName === 'Iflex'){ -%>
                              <%- fun(itemListItem,fun) -%>
@@ -18,9 +18,9 @@ let itemTemplates = `
                  <%}) -%>
             <% } -%>
             <% if(list.num.length > 1){ -%>
-                <view<%- iClassToString(list.iClass,'flex') -%><%- iStyleToString(list.iStyle) %>>
+                <view v-if="true" <%- iClassToString(list.iClass,'flex') -%><%- iStyleToString(list.iStyle) %>>
                     <% list.num.forEach(num => { -%>
-                         <view<%- iClassToString(num.iClass,'margin-0',num.layoutClass) -%><%- iStyleToString(num.iStyle) %>>
+                         <view v-if="true" <%- iClassToString(num.iClass,num.layoutClass) -%><%- iStyleToString(num.iStyle) %>>
                              <% num.itemList.forEach(itemListItem => { -%>
                                  <% if(itemListItem.componentName === 'Iflex'){ -%>
                                  <%- fun(itemListItem,fun) -%>
@@ -40,7 +40,7 @@ let fileTemplates =
         <% list.forEach(item => { -%>
             <% if(item.num.length === 1){ -%>
                 <% item.num.forEach(num => { -%>
-                     <view<%- iClassToString(num.iClass,'margin-0') -%><%- iStyleToString(num.iStyle) %>>
+                     <view v-if="true" <%- iClassToString(num.iClass) -%><%- iStyleToString(num.iStyle) %>>
                          <% num.itemList.forEach(itemListItem => { -%>
                              <% if(itemListItem.componentName === 'Iflex'){ -%>
                              <%- fun(itemListItem,fun) -%>
@@ -52,9 +52,9 @@ let fileTemplates =
                  <%}) -%>
             <% } -%>
             <% if(item.num.length > 1){ -%>
-                <view<%- iClassToString(item.iClass,'flex') -%><%- iStyleToString(item.iStyle) %>>
+                <view v-if="true" <%- iClassToString(item.iClass,'flex') -%><%- iStyleToString(item.iStyle) %>>
                     <% item.num.forEach(num => { -%>
-                         <view<%- iClassToString(num.iClass,'margin-0',num.layoutClass) -%><%- iStyleToString(num.iStyle) %>>
+                         <view<%- iClassToString(num.iClass,num.layoutClass) -%><%- iStyleToString(num.iStyle) %>>
                              <% num.itemList.forEach(itemListItem => { -%>
                                  <% if(itemListItem.componentName === 'Iflex'){ -%>
                                  <%- fun(itemListItem,fun) -%>

@@ -26,6 +26,7 @@ function removeNode(node) {
 }
 
 function insertNodeAt(fatherNode, node, position) {
+
   const refNode =
     position === 0
       ? fatherNode.children[0]

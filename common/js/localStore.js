@@ -10,6 +10,32 @@ let _getLocalStore = (key) => {
     return uni.getStorageSync(key)
 }
 
+let insertStr = (soure,start, newStr) => {
+    return soure.slice(0, start) + newStr + soure.slice(start)
+}
+
+let addComment=(origin,now) =>{
+    let o,n
+    try {
+        o=JSON.parse(origin).listData[3]
+        n=JSON.parse(now).listData[3]
+    }catch (e) {
+        return now
+    }
+
+    let oNode=JSON.stringify(o)
+    let nNode=JSON.stringify(n)
+    let i=0
+    while (oNode.charAt(i)===nNode.charAt(i)){
+        i++
+    }
+    let comment = _getLocalStore('comment');
+    nNode=insertStr(nNode,nNode.indexOf(',',i)+1,'"comment":"'+comment+'",')
+    n=JSON.parse(nNode)
+    let nn=JSON.parse(now)
+    nn.listData[3]=n
+    return JSON.stringify(nn)
+}
 // ------------------------------------------------
 
 let storeKey = {
@@ -25,7 +51,15 @@ let storeKey = {
  * @param data
  */
 let cachesFolder = (data) => {
-    let dataStr = JSON.stringify(data)
+    let dataStr = JSON.stringify(data[0])
+    // let origin = JSON.stringify(_getLocalStore(storeKey.FOLDER_LIST))
+    // // console.log(dataStr)
+    // // console.log(_getLocalStore(storeKey.FOLDER_LIST))
+    // if (dataStr&&origin&&dataStr!="[]"&&origin!="[]"){
+    //     dataStr=addComment(origin,dataStr)
+    //     console.log(dataStr)
+    // }
+
     _setLocalStore(storeKey.FOLDER_LIST , dataStr)
 }
 
